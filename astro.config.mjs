@@ -6,5 +6,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: vercel()
+  adapter: vercel({
+    includeFiles: ["./public/fonts/Optimistic_Display_Bold.ttf"]
+  })
 });
