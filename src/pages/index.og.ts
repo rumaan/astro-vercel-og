@@ -39,9 +39,10 @@ export const get: APIRoute = async () => {
     ],
   });
 
-  const res = await sharp(Buffer.from(svg)).png() as any; // Temp
+  const png = sharp(Buffer.from(svg)).png();
+  const response = await png.toBuffer();
 
-  return new Response(res, {
+  return new Response(response, {
     status: 200,
     headers: {
       "Content-Type": "image/png",
