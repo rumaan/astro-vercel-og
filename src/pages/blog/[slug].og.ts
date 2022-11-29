@@ -1,10 +1,31 @@
 import satori from "satori";
 import { html } from "satori-html";
 import { readFileSync } from "fs";
-import type { APIRoute } from "astro";
+import type { APIRoute, MarkdownInstance } from "astro";
 import sharp from "sharp";
+import { basename } from "path";
 
-export const get: APIRoute = async () => {
+export const get: APIRoute = async ({ params }) => {
+  const { slug } = params;
+  // Find the slug in content dir
+  const posts: Record<string, () => Promise<any>> = import.meta.glob(
+    `./**/*.md`
+  );
+
+  const postPaths = Object.entries(posts).map(([path, promise]) => ({
+    slug: basename(path).replace(".md", ""),
+    loadPost: promise,
+  }));
+
+  const post = postPaths.find((p) => p.slug === String(slug));
+  let postTitle = `My Blog`; // Default title if post not found
+  if (post) {
+    const postData = (await post.loadPost()) as MarkdownInstance<
+      Record<string, any>
+    >;
+    postTitle = postData.frontmatter.title;
+  }
+
   const fontFilePath = `${process.cwd()}/public/fonts/Optimistic_Display_Bold.ttf`;
   const fontFile = readFileSync(fontFilePath);
   const markup = html(`<div
@@ -13,12 +34,7 @@ export const get: APIRoute = async () => {
     <div
       style="font-size: 70px; margin-top: 38px; display: flex; flex-direction: column; color: white;"
     >
-      <span
-        >Hello from
-        <span style="margin-left:15ch;color: rgb(255,93,1);"
-          >Astro</span
-        ></span
-      >
+      ${postTitle}
     </div>
   </div>`);
   const svg = await satori(markup, {
