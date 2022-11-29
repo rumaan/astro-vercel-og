@@ -1,17 +1,25 @@
----
-import Seo from "../components/Seo.astro";
----
-
 <html lang="en">
   <head>
-    <Seo />
     <title>Vercel Astro</title>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#171C1A" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      property="og:image"
+      content="https://astro-vercel-og.vercel.app/index.og"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
   </head>
   <body>
     <h1>
-      Vercel Astro OG: <a href="/index.og"
-        >Check here</a
-      >
+      Vercel Astro OG: <a href="/index.og">Check here</a>
     </h1>
   </body>
 </html>
