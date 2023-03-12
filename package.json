@@ -11,8 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^3.2.0",
-    "@resvg/resvg-js": "^2.4.1",
+    "@astrojs/node": "^5.1.0",
+    "@astrojs/vercel": "^3.0.1",
     "astro": "^2.1.2",
     "satori": "^0.4.2",
     "satori-html": "^0.3.2",
