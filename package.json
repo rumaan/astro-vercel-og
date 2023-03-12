@@ -11,15 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^2.3.3",
-    "@resvg/resvg-js": "^2.1.0",
-    "astro": "^1.6.0",
-    "satori": "^0.0.43",
-    "satori-html": "^0.3.0",
-    "sharp": "^0.31.2"
+    "@astrojs/vercel": "^3.2.0",
+    "@resvg/resvg-js": "^2.4.1",
+    "astro": "^2.1.2",
+    "satori": "^0.4.2",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
-    "@types/node": "^18.11.8",
-    "@types/sharp": "^0.31.0"
+    "@types/node": "^18.15.0",
+    "@types/sharp": "^0.31.1"
   }
 }

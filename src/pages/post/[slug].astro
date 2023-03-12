@@ -1,0 +1,17 @@
+---
+import { getEntryBySlug } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const { slug } = Astro.params;
+
+const entry = await getEntryBySlug("post", slug!!);
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+---
+
+<BlogLayout frontmatter={{ title: entry.data.title}} url={`post/${slug}`} >
+  <Content />
+</BlogLayout>
