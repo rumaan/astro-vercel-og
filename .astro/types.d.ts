@@ -1,24 +1,7 @@
 declare module 'astro:content' {
-	interface Render {
-		'.md': Promise<{
-			Content: import('astro').MarkdownInstance<{}>['Content'];
-			headings: import('astro').MarkdownHeading[];
-			remarkPluginFrontmatter: Record<string, any>;
-		}>;
-	}
-}
-
-declare module 'astro:content' {
 	export { z } from 'astro/zod';
 	export type CollectionEntry<C extends keyof typeof entryMap> =
-		(typeof entryMap)[C][keyof (typeof entryMap)[C]];
-
-	export const image: () => import('astro/zod').ZodObject<{
-		src: import('astro/zod').ZodString;
-		width: import('astro/zod').ZodNumber;
-		height: import('astro/zod').ZodNumber;
-		format: import('astro/zod').ZodString;
-	}>;
+		(typeof entryMap)[C][keyof (typeof entryMap)[C]] & Render;
 
 	type BaseSchemaWithoutEffects =
 		| import('astro/zod').AnyZodObject
@@ -74,6 +57,14 @@ declare module 'astro:content' {
 		Required<ContentConfig['collections'][C]>['schema']
 	>;
 
+	type Render = {
+		render(): Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	};
+
 	const entryMap: {
 		"post": {
 "hello.md": {
@@ -82,7 +73,7 @@ declare module 'astro:content' {
   body: string,
   collection: "post",
   data: InferEntrySchema<"post">
-} & { render(): Render[".md"] },
+},
 },
 
 	};

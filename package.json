@@ -11,16 +11,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^5.1.0",
-    "@astrojs/vercel": "^3.0.1",
-    "astro": "^2.1.2",
+    "@astrojs/vercel": "~3.0.1",
+    "astro": "~2.0.0",
     "satori": "^0.4.2",
     "satori-html": "^0.3.2",
     "sharp": "^0.31.3"
   },
   "devDependencies": {
     "@types/node": "^18.15.0",
-    "@types/sharp": "^0.31.1",
-    "image-size": "^1.0.2"
+    "@types/sharp": "^0.31.1"
   }
 }
