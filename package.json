@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.15.0",
-    "@types/sharp": "^0.31.1"
+    "@types/sharp": "^0.31.1",
+    "image-size": "^1.0.2"
   }
 }
